@@ -85,3 +85,11 @@ graph <- ggplot(data = clean_sst, # choosing the data frame
 
 print(graph)
 ```
+
+# 3. Data analysis
+
+```{r}
+sst <- read.csv("C:/Users/tuthi/OneDrive/Documents/github/ENVS-193DS_spring-2025_final/data/occdist.csv") # reading in data file
+```
+
+
