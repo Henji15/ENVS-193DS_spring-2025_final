@@ -148,6 +148,16 @@ model3 <- glm(
 
 ```
 
+## f. 
+
+```{r}
+# displaying the plots for each model
+# 
+Model0 <- plot(simulateResiduals(model0)) # for null model
+Model1 <- plot(simulateResiduals(model1)) # for all predictor variables
+Model2 <- plot(simulateResiduals(model2)) # for season variable
+Model3 <- plot(simulateResiduals(model3)) # for distance from forest edge variable
+```
 # 4. Affective and exploratory visualizations
 
 ## a. Comparing visualizations
