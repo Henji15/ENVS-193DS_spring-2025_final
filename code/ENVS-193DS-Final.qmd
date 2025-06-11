@@ -16,13 +16,15 @@ library(flextable)
 library(janitor)
 library(readxl)
 library(magick)
+library(MuMIn)
+library(DHARMa)
 ```
 
 # 1. Research writing
 
 ## a. Transparent statistical methods
 
-\[In part 1, they used a correlation test. In part 2, they used an ANOVA test.\]
+[In part 1, they used a correlation test. In part 2, they used an ANOVA test.]
 
 ## b. More information needed
 
@@ -96,3 +98,6 @@ nest_boxes <- read.csv("C:/Users/tuthi/OneDrive/Documents/github/ENVS-193DS_spri
 
 [The 1's indicate if that nest box was occupied by the bird of interest (besides the empty category, in which case being empty means 1). The 0's indicate if the nest box was empty or occupied by a bird that was not of interest (besides the empty category, which means it was occupied).]
 
+## b. Purpose of study
+
+[Swift parrots tended not to nest in the same place in successive seasons, leaving open boxes for competitors. Other species like the Common Starling preferred to nest in boxes closer to the forest edge, whereas that was the opposite for the Tree Martin.]
