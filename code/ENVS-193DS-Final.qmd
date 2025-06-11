@@ -34,6 +34,24 @@ library(magick)
 
 # 2. Data Visualization
 
+## a. Cleaning and summarizing
+
 ```{r}
 sst <- read.csv("C:/Users/tuthi/OneDrive/Documents/github/ENVS-193DS_spring-2025_final/data/SST_update2023.csv") # reading in data file
 ```
+
+```{r}
+clean_sst <- sst |> # creating a new dataframe
+  clean_names() |> # cleaning up data frame
+  filter(year(date) >= 2018 & year(date) <= 2023) |> # setting up the range of years that I want
+  mutate(
+    date = as.Date(date), # converts to date format in R
+    year = year(date), # adds new column for year and extracts year part  from each date column
+    month = month(date, label = TRUE, abbr = TRUE) # creates a new column for month and extracts month from date column, while abbreviating month name
+  ) |>
+  group_by(year, month) |> # pairs up the month and year together 
+  summarise(mean_monthly_sst = mean(temp, na.rm = TRUE)) |> # calculate mean surface temperature for each month and year group, rename column
+  mutate(year=factor(year)) # converts year column to factor for plotting
+```
+
+
