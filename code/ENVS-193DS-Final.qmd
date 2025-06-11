@@ -60,3 +60,28 @@ str(clean_sst)
 
 ```
 
+## b. Visualize the data
+
+```{r}
+graph <- ggplot(data = clean_sst, # choosing the data frame
+       aes(x = month, # selecting month data as x-axis
+           y = mean_monthly_sst, # selecting mean_monthly_sst as y axis
+        color = year, # assign color to year
+        shape = year, # assign shape to year
+        group = year)) + # assign group to year
+  geom_point (shape = 16) + # plot mean_monthly_sst and establish size and shape
+  geom_line() + # plot the lines
+  scale_color_manual(
+    name = "Year", # renaming the legend title
+    values = c("2018" = "#FFC000", "2019" = "#FF9666", "2020" = "#FB6A4A", "2021" = "#DE2D26", "2022" = "#A50F15", "2023" = "#660000")) + # creating custom colors for the years group
+  theme(
+    panel.background = element_blank(), # make panel background blank
+    panel.border = element_rect(color = "gray", fill = NA, linewidth = 1), # creating a panel border around the graph
+    legend.position = c(0.12, 0.95), # values set for adjusting the margins of legend
+    legend.justification = c("right", "top")) + # setting up the type of margins to adjust for 
+  labs(x = "Month", # name x-axis as Month
+       y = r"[Mean monthly sea surface temperature (°C)]", # name y-axis as Total monthly rain (inches) 
+      )
+
+print(graph)
+```
