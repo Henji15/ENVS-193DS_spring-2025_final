@@ -4,8 +4,10 @@ author: Max Tu
 date: 6/11/25
 format: html
 toc: true
-message: false # use this to make sure messages don't show up
-warning: false # use this to make sure warnings don't show up
+execute: 
+  message: false # use this to make sure messages don't show up
+  error: false
+  warning: false # use this to make sure warnings don't show up
 ---
 
 ```{r}
