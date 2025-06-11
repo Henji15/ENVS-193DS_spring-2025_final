@@ -18,3 +18,16 @@ library(readxl)
 library(magick)
 ```
 
+# 1. Research writing
+
+## a. Transparent statistical methods
+
+\[In part 1, they used a correlation test. In part 2, they used an ANOVA test.\]
+
+## b. More information needed
+
+[The first test would be Tukey Honestly Significantly Different (Tukey HSD) test. It compares which sources are actually different when you compare them (like the average nirogen laod (kg year^-1). Another test would be calculating the effect size shows how much the grouping variable explains the response variable (how much the source explains the average nitrogen load (kg year^-1))]
+
+## c. Suggestions for rewriting
+
+[In part 1, we found some correlation between distance from headwater (km) and annual total nitrogen load (kg year-1) (pearson's correlation test, r = correlaton coefficient, p = 0.03, $\alpha$ = significance level). For part 2, we found a difference ($\eta$^2 = effect size) between sources in average nitrogen load (kg year-1) (one-way ANOVA , F(among groups df, within groups df) = test statistic, p = 0.02, $\alpha$ = significance level). On average, urban showed land __ nitrogen load (kg year^-1) (x kg __, % confidence interval: [lower bound, upper bound] kg year^-1) than atmospheric deposition (this can expanded for more variables).]
