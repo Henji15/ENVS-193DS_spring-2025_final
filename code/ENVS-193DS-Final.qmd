@@ -24,15 +24,15 @@ library(DHARMa)
 
 ## a. Transparent statistical methods
 
-[In part 1, they used a correlation test. In part 2, they used an ANOVA test.]
+\[In part 1, they used a correlation test. In part 2, they used an ANOVA test.\]
 
 ## b. More information needed
 
-[The first test would be Tukey Honestly Significantly Different (Tukey HSD) test. It compares which sources are actually different when you compare them (like the average nirogen laod (kg year^-1). Another test would be calculating the effect size shows how much the grouping variable explains the response variable (how much the source explains the average nitrogen load (kg year^-1))]
+\[The first test would be Tukey Honestly Significantly Different (Tukey HSD) test. It compares which sources are actually different when you compare them (like the average nirogen laod (kg year\^-1). Another test would be calculating the effect size shows how much the grouping variable explains the response variable (how much the source explains the average nitrogen load (kg year\^-1))\]
 
 ## c. Suggestions for rewriting
 
-[In part 1, we found some correlation between distance from headwater (km) and annual total nitrogen load (kg year-1) (pearson's correlation test, r = correlaton coefficient, p = 0.03, $\alpha$ = significance level). For part 2, we found a difference ($\eta$^2 = effect size) between sources in average nitrogen load (kg year-1) (one-way ANOVA , F(among groups df, within groups df) = test statistic, p = 0.02, $\alpha$ = significance level). On average, urban showed land __ nitrogen load (kg year^-1) (x kg __, % confidence interval: [lower bound, upper bound] kg year^-1) than atmospheric deposition (this can expanded for more variables).]
+\[In part 1, we found some correlation between distance from headwater (km) and annual total nitrogen load (kg year-1) (pearson's correlation test, r = correlaton coefficient, p = 0.03, $\alpha$ = significance level). For part 2, we found a difference ($\eta$\^2 = effect size) between sources in average nitrogen load (kg year-1) (one-way ANOVA , F(among groups df, within groups df) = test statistic, p = 0.02, $\alpha$ = significance level). On average, urban showed land \_\_ nitrogen load (kg year\^-1) (x kg \_\_, % confidence interval: \[lower bound, upper bound\] kg year\^-1) than atmospheric deposition (this can expanded for more variables).\]
 
 # 2. Data Visualization
 
@@ -96,8 +96,22 @@ nest_boxes <- read.csv("C:/Users/tuthi/OneDrive/Documents/github/ENVS-193DS_spri
 
 ## a. Response variable
 
-[The 1's indicate if that nest box was occupied by the bird of interest (besides the empty category, in which case being empty means 1). The 0's indicate if the nest box was empty or occupied by a bird that was not of interest (besides the empty category, which means it was occupied).]
+\[The 1's indicate if that nest box was occupied by the bird of interest (besides the empty category, in which case being empty means 1). The 0's indicate if the nest box was empty or occupied by a bird that was not of interest (besides the empty category, which means it was occupied).\]
 
 ## b. Purpose of study
 
-[Swift parrots tended not to nest in the same place in successive seasons, leaving open boxes for competitors. Other species like the Common Starling preferred to nest in boxes closer to the forest edge, whereas that was the opposite for the Tree Martin.]
+\[Swift parrots tended not to nest in the same place in successive seasons, leaving open boxes for competitors. Other species like the Common Starling preferred to nest in boxes closer to the forest edge, whereas that was the opposite for the Tree Martin.\]
+
+## c. Difference in "seasons"
+
+\[The seasons are the 2016 and 2019 summer breeding seasons for the Swift Parrots. The boxes were just deployed in 2016, whereas the boxes were established for three years by 2019, allowing us to compare how box age affects occupancy and competitors.\]
+
+## d. Table of Models
+
+| model number | season | distance to forest edge | model description |
+|----|----|----|----|
+| 0 |  |  | No predictors (null model) |
+| 1 | X | X | Year + Distance (saturated model) |
+| 2 | X |  | Year |
+| 3 |  | X | Distance to forest edge |
+
