@@ -54,4 +54,9 @@ clean_sst <- sst |> # creating a new dataframe
   mutate(year=factor(year)) # converts year column to factor for plotting
 ```
 
+```{r}
+slice_sample(clean_sst, n = 5) # showing 5 random rows from dataset
+str(clean_sst)
+
+```
 
