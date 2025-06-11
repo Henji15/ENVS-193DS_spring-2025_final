@@ -31,3 +31,9 @@ library(magick)
 ## c. Suggestions for rewriting
 
 [In part 1, we found some correlation between distance from headwater (km) and annual total nitrogen load (kg year-1) (pearson's correlation test, r = correlaton coefficient, p = 0.03, $\alpha$ = significance level). For part 2, we found a difference ($\eta$^2 = effect size) between sources in average nitrogen load (kg year-1) (one-way ANOVA , F(among groups df, within groups df) = test statistic, p = 0.02, $\alpha$ = significance level). On average, urban showed land __ nitrogen load (kg year^-1) (x kg __, % confidence interval: [lower bound, upper bound] kg year^-1) than atmospheric deposition (this can expanded for more variables).]
+
+# 2. Data Visualization
+
+```{r}
+sst <- read.csv("C:/Users/tuthi/OneDrive/Documents/github/ENVS-193DS_spring-2025_final/data/SST_update2023.csv") # reading in data file
+```
