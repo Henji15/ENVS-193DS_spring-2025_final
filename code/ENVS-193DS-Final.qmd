@@ -158,6 +158,18 @@ Model1 <- plot(simulateResiduals(model1)) # for all predictor variables
 Model2 <- plot(simulateResiduals(model2)) # for season variable
 Model3 <- plot(simulateResiduals(model3)) # for distance from forest edge variable
 ```
+
+## g. Select the best model
+
+```{r}
+AICc(model0,
+     model1,
+     model2,
+     model3) |> 
+  arrange(AICc) # arrange in descending order
+```
+[The best model as determined by Akaike’s Information Criterion (AIC) is the one where the year and distance from forest edge predicts Swift parrot nest box occupancy. This was the best as it had the lowest AIC value of 226.31.]
+
 # 4. Affective and exploratory visualizations
 
 ## a. Comparing visualizations
