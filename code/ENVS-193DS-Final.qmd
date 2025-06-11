@@ -19,9 +19,9 @@ library(magick)
 library(MuMIn)
 library(DHARMa)
 
-sst <- read.csv("C:/Users/tuthi/OneDrive/Documents/github/ENVS-193DS_spring-2025_final/data/SST_update2023.csv") # reading in data file for #2
+sst <- read.csv("C:/Users/tuthi/OneDrive/Documents/github/ENVS-193DS_spring-2025_final/data/SST_update2023.csv") # reading in data file for problem 2
 
-nest_boxes <- read.csv("C:/Users/tuthi/OneDrive/Documents/github/ENVS-193DS_spring-2025_final/data/occdist.csv") # reading in data file for #3
+nest_boxes <- read.csv("C:/Users/tuthi/OneDrive/Documents/github/ENVS-193DS_spring-2025_final/data/occdist.csv") # reading in data file for problem 3
 ```
 
 # 1. Research writing
@@ -91,17 +91,10 @@ print(graph)
 # 3. Data analysis
 
 ```{r echo = FALSE}
-nest_boxes_clean <- nest_boxes |>
-  clean_names() |>
-  mutate(box_occupant = case_when(
-      box_occupant == "swift parrot" ~ "sp",
-      box_occupant == "common starling" ~ "cs",
-      box_occupant == "tree martin" ~ "tm",
-      box_occupant == "empty" ~ "e",
-      TRUE ~ "other"  # optional fallback
-    ))
-  
+nest_boxes_clean <- nest_boxes |> # creating a new dataframe
+  clean_names()
 ```
+
 ## a. Response variable
 
 \[The 1's indicate if that nest box was occupied by the bird of interest (besides the empty category, in which case being empty means 1). The 0's indicate if the nest box was empty or occupied by a bird that was not of interest (besides the empty category, which means it was occupied).\]
@@ -122,6 +115,36 @@ nest_boxes_clean <- nest_boxes |>
 | 1 | X | X | Year + Distance (saturated model) |
 | 2 | X |  | Year |
 | 3 |  | X | Distance to forest edge |
+
+## e. Run the models
+
+```{r}
+
+# null model
+model0 <- glm(
+  sp ~ 1, # formula
+  data = nest_boxes_clean, # data frame
+  family = binomial())
+
+# all predictor variables (year and distance)
+model1 <- glm(
+  sp ~ season + edge_distance, # formula
+  data = nest_boxes_clean, # data frame
+  family = binomial())
+
+# year variable
+model2 <- glm(
+  sp ~ season,
+  data = nest_boxes_clean,
+  family = binomial())
+
+# distance to forest variable
+model3 <- glm(
+  sp ~ edge_distance,
+  data = nest_boxes_clean,
+  family = binomial())
+
+```
 
 # 4. Affective and exploratory visualizations
 
