@@ -89,7 +89,10 @@ print(graph)
 # 3. Data analysis
 
 ```{r}
-sst <- read.csv("C:/Users/tuthi/OneDrive/Documents/github/ENVS-193DS_spring-2025_final/data/occdist.csv") # reading in data file
+nest_boxes <- read.csv("C:/Users/tuthi/OneDrive/Documents/github/ENVS-193DS_spring-2025_final/data/occdist.csv") # reading in data file
 ```
 
+## a. Response variable
+
+[The 1's indicate if that nest box was occupied by the bird of interest (besides the empty category, in which case being empty means 1). The 0's indicate if the nest box was empty or occupied by a bird that was not of interest (besides the empty category, which means it was occupied).]
 
