@@ -20,6 +20,7 @@ library(readxl)
 library(magick)
 library(MuMIn)
 library(DHARMa)
+library(ggeffects)
 
 sst <- read.csv("C:/Users/tuthi/OneDrive/Documents/github/ENVS-193DS_spring-2025_final/data/SST_update2023.csv") # reading in data file for problem 2
 
@@ -169,6 +170,53 @@ AICc(model0,
   arrange(AICc) # arrange in descending order
 ```
 [The best model as determined by Akaike’s Information Criterion (AIC) is the one where the year and distance from forest edge predicts Swift parrot nest box occupancy. This was the best as it had the lowest AIC value of 226.31.]
+
+## h. Visualize the model predictions
+
+```{r}
+predicted_vals <- ggpredict(model1, terms = c("edge_distance [all]", "season")) |>
+  rename(season = group) 
+
+nest_data <- nest_boxes_clean |> 
+  mutate(
+    sp = as.numeric(sp),
+    season = factor(season))
+
+# Plot
+ggplot(data = nest_data, 
+       aes(x = edge_distance, y = sp, color = season)) +
+  
+  geom_point(alpha = 0.5, size = 2.2) +
+
+  geom_ribbon(data = predicted_vals,
+              aes(x = x, ymin = conf.low, ymax = conf.high, fill = season),
+              alpha = 0.25, inherit.aes = FALSE) +
+
+
+  geom_line(data = predicted_vals,
+            aes(x = x, y = predicted, color = season),
+            linewidth = 1.1, inherit.aes = FALSE) +
+
+  scale_y_continuous(limits = c(0, 1), breaks = c(0, 1, 0.5)) +
+  scale_fill_manual(values = c("2016" = "#d95f0e", "2019" = "#1b9e77")) +
+  scale_color_manual(values = c("2016" = "#d95f0e", "2019" = "#1b9e77")) +
+
+  theme_classic(base_size = 13) +
+  theme(
+    panel.background = element_blank(),
+    panel.grid = element_blank(),
+    axis.ticks = element_line(color = "black"),
+    axis.line = element_line(color = "black"),
+    legend.position = c(0.87, 0.6)) +
+
+  labs(
+  title = "Swift Parrot Nest Box Use based on Distance from Forest Edge",
+  x = "Distance from forest edge (m)",
+  y = "Probability of nest box occupancy (%)",
+  fill = "Season", 
+  color = "Season")
+```
+
 
 # 4. Affective and exploratory visualizations
 
