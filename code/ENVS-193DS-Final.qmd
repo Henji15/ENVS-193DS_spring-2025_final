@@ -9,6 +9,7 @@ execute:
   error: false
   warning: false # use this to make sure warnings don't show up
 ---
+link to your Github repo: https://github.com/Henji15/ENVS-193DS_spring-2025_final.git
 
 ```{r}
 library(tidyverse) # reading in packages
@@ -21,10 +22,13 @@ library(magick)
 library(MuMIn)
 library(DHARMa)
 library(ggeffects)
+library(fs)
 
 sst <- read.csv("C:/Users/tuthi/OneDrive/Documents/github/ENVS-193DS_spring-2025_final/data/SST_update2023.csv") # reading in data file for problem 2
 
 nest_boxes <- read.csv("C:/Users/tuthi/OneDrive/Documents/github/ENVS-193DS_spring-2025_final/data/occdist.csv") # reading in data file for problem 3
+
+fs::dir_tree()
 ```
 
 # 1. Research writing
@@ -60,8 +64,13 @@ clean_sst <- sst |> # creating a new dataframe
 ```
 
 ```{r}
-slice_sample(clean_sst, n = 5) # showing 5 random rows from dataset
-str(clean_sst)
+clean_sst_ungrouped <- clean_sst |> ungroup() # treat data like regular data frame
+
+slice_sample(clean_sst_ungrouped, n = 5) # Show 5 random rows from ungrouped data
+
+str(clean_sst_ungrouped) # Show structure of ungrouped data
+
+head(clean_sst_ungrouped, n = 5) # Show first 5 rows of ungrouped data
 
 ```
 
@@ -104,7 +113,7 @@ nest_boxes_clean <- nest_boxes |> # creating a new dataframe
 
 ## b. Purpose of study
 
-\[Swift parrots tended not to nest in the same place in successive seasons, leaving open boxes for competitors. Other species like the Common Starling preferred to nest in boxes closer to the forest edge, whereas that was the opposite for the Tree Martin.\]
+\[Swift Parrots are the endangered target species that the nest box is trying to help with the species' restoration. The Common Starling (invasive) and Tree Martin (native) are the Swift Parrot's largest threat through competition (also a threat to restoration efforts).]
 
 ## c. Difference in "seasons"
 
@@ -124,25 +133,25 @@ nest_boxes_clean <- nest_boxes |> # creating a new dataframe
 ```{r}
 
 # null model
-model0 <- glm( # generalized lineear model
+model0 <- glm( # generalized linear model
   sp ~ 1, # no predictors
   data = nest_boxes_clean, # data frame
   family = binomial()) # logistic regression (binary outcome: 1 = occupied, 0 = not)
 
 # all predictor variables (year and distance)
-model1 <- glm( # generalized lineear model
+model1 <- glm( # generalized linear model
   sp ~ season + edge_distance, # both predictor variables
   data = nest_boxes_clean, # data frame
   family = binomial()) # # logistic regression (binary outcome: 1 = occupied, 0 = not)
 
 # year variable
-model2 <- glm( # generalized lineear model
+model2 <- glm( # generalized linear model
   sp ~ season, # just year predictor variable
   data = nest_boxes_clean, # from this data frame
   family = binomial()) # logistic regression (binary outcome: 1 = occupied, 0 = not)
 
 # distance to forest variable
-model3 <- glm( # generalized lineear model
+model3 <- glm( # generalized linear model
   sp ~ edge_distance, # just distance from forest edge predicted variable
   data = nest_boxes_clean, # from this data frame
   family = binomial()) # logistic regression (binary outcome: 1 = occupied, 0 = not)
