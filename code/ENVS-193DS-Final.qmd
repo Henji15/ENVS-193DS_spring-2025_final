@@ -39,7 +39,7 @@ nest_boxes <- read.csv("C:/Users/tuthi/OneDrive/Documents/github/ENVS-193DS_spri
 
 ## b. More information needed
 
-\[The first test would be Tukey Honestly Significantly Different (Tukey HSD) test. It compares which sources are actually different when you compare them (like urban land, atmospheric deposition, fertilizer, wastewater treatment, and grassland's average nitrogen load (kg year⁻)). Another test would be calculating the effect size shows how much the grouping variable explains the response variable (how much the source explains the average nitrogen load (kg year⁻¹)). An effect size for ANOVA would help add context to assess if the differences between the sources are biologically meaningful.\]
+\[The first test would be Tukey Honestly Significantly Different (Tukey HSD) test. It compares which sources are actually different when you compare them (like urban land, atmospheric deposition, fertilizer, wastewater treatment, and grassland's average nitrogen load (kg year⁻¹)). Another test would be calculating the effect size shows how much the grouping variable explains the response variable (how much the source explains the average nitrogen load (kg year⁻¹)). An effect size for ANOVA would help add context to assess if the differences between the sources are biologically meaningful.\]
 
 ## c. Suggestions for rewriting
 
