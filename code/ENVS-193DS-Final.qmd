@@ -149,7 +149,7 @@ model3 <- glm(
 
 ```
 
-## f. 
+## f.
 
 ```{r}
 # displaying the plots for each model
@@ -169,7 +169,8 @@ AICc(model0,
      model3) |> 
   arrange(AICc) # arrange in descending order
 ```
-[The best model as determined by Akaike’s Information Criterion (AIC) is the one where the year and distance from forest edge predicts Swift parrot nest box occupancy. This was the best as it had the lowest AIC value of 226.31.]
+
+\[The best model as determined by Akaike’s Information Criterion (AIC) is the one where the year and distance from forest edge predicts Swift parrot nest box occupancy. This was the best as it had the lowest AIC value of 226.31.\]
 
 ## h. Visualize the model predictions
 
@@ -217,11 +218,12 @@ ggplot(data = nest_data,
   color = "Season")
 ```
 
+## i. Write a caption for your figure
+
+\[Figure 1 shows the Swift Parrot Nest Box Use based on Distance from Forest Edge. The x axis shows the distance from the forest edge and the y-axis shows the probability of nest box occupancy (%). The red line is from the 2016 season and the green line is from the 2019 season. The shaded ribbons on both lines show the 95% confidence interval around the values predicted by the season and distance from the forest edge. The nests occupied by the Swift Parrot (n = 49) are the points at the top (100% occupancy). The nests not occupied by the Swift Parrots and occupied by other birds or empty (n = 178) are the points at the bottom (0%). For both the 2016 and 2019 season, it appears that the probability of the Swift Parrot's nest box occupancy decreases at it gets further away from the forest edge. The From Stojanovic, Dejan; Owens, Giselle; Young, Catherine et al. (2021). Do nest boxes breed the target species or its competitors? A case study of a critically endangered bird \[Dataset\]. Dryad. https://doi.org/10.5061/dryad.83bk3j9sb\]
 
 # 4. Affective and exploratory visualizations
 
 ## a. Comparing visualizations
 
-[The visualizations are different from how I represented my data originally. My initial visualization showed two box plots comparing steps on a short or long day (with median, Q1, Q3 shown), whereas my final visualization shows the steps throughout the quarter. I attach the different categories to my steps (extracurriculars, office hours, and food banks) and this was definitely more visual with icons being shown. There's not really much similarities between the two visualizations, as my affective visualization was more like a plot of my steps throughout the quarter with various icons. On the other hand, my exploratory visualization was more bland and just compared two box plots together. Based on my exploratory visualization, it appeared that my longer days tended to have more steps based on the median. I also noticed that in my affective visualization by looking at the average steps, although this was also influenced by whether or not I had extracurriculars as well. A feedback that I got was to put an icon for my screentime data, which I did by adding a clock icon. I also spaced out my data more.]
-
-
+\[The visualizations are different from how I represented my data originally. My initial visualization showed two box plots comparing steps on a short or long day (with median, Q1, Q3 shown), whereas my final visualization shows the steps throughout the quarter. I attach the different categories to my steps (extracurriculars, office hours, and food banks) and this was definitely more visual with icons being shown. There's not really much similarities between the two visualizations, as my affective visualization was more like a plot of my steps throughout the quarter with various icons. On the other hand, my exploratory visualization was more bland and just compared two box plots together. Based on my exploratory visualization, it appeared that my longer days tended to have more steps based on the median. I also noticed that in my affective visualization by looking at the average steps, although this was also influenced by whether or not I had extracurriculars as well. A feedback that I got was to put an icon for my screentime data, which I did by adding a clock icon. I also spaced out my data more.\]
