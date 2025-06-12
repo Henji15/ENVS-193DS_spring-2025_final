@@ -4,7 +4,7 @@ This is the code and all the related documents for ENVS 193DS spring final 2025.
 
 # General Information
 
-The github project was made for the ENVS 193DS final. All of the codes and output were made by me, Max Tu (username- Henji15). The project includes data analysis and visualization for two datasets: sea surface temperature (SST) in the Santa Barbara Channel and nest box occupancy for Swift Parrots. The SST dataset was extracted from the SBC LTER data catalog (https://sbclter.msi.ucsb.edu/data/catalog/). The Swift Parrot dataset (occdist.csv) was obtained from https://datadryad.org/dataset/doi:10.5061/dryad.83bk3j9sb from the researchers at the Australian National Univeristy. The analysis discusses the monthly sea surface temperature trends from 2018-2023 and the relationship between the Swift Parrot nest box occupancy with the predictor variables of forest edge distance and season.
+The github project was made for the ENVS 193DS final. All of the codes and output were made by me, Max Tu (username- Henji15). The project includes data analysis and visualization for two datasets: sea surface temperature (SST) in the Santa Barbara Channel and nest box occupancy for Swift Parrots. The SST dataset was extracted from the SBC LTER data catalog (https://sbclter.msi.ucsb.edu/data/catalog/). The Swift Parrot dataset (occdist.csv) was obtained from https://datadryad.org/dataset/doi:10.5061/dryad.83bk3j9sb from the researchers at the Australian National Univeristy. The analysis analyzes the monthly sea surface temperature trends from 2018-2023 (creating a figure for it) and the relationship between the Swift Parrot nest box occupancy with the predictor variables of forest edge distance and season.
 
 # Data and file overview:
 
