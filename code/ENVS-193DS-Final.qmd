@@ -124,28 +124,28 @@ nest_boxes_clean <- nest_boxes |> # creating a new dataframe
 ```{r}
 
 # null model
-model0 <- glm(
-  sp ~ 1, # formula
+model0 <- glm( # generalized lineear model
+  sp ~ 1, # no predictors
   data = nest_boxes_clean, # data frame
-  family = binomial())
+  family = binomial()) # logistic regression (binary outcome: 1 = occupied, 0 = not)
 
 # all predictor variables (year and distance)
-model1 <- glm(
-  sp ~ season + edge_distance, # formula
+model1 <- glm( # generalized lineear model
+  sp ~ season + edge_distance, # both predictor variables
   data = nest_boxes_clean, # data frame
-  family = binomial())
+  family = binomial()) # # logistic regression (binary outcome: 1 = occupied, 0 = not)
 
 # year variable
-model2 <- glm(
-  sp ~ season,
-  data = nest_boxes_clean,
-  family = binomial())
+model2 <- glm( # generalized lineear model
+  sp ~ season, # just year predictor variable
+  data = nest_boxes_clean, # from this data frame
+  family = binomial()) # logistic regression (binary outcome: 1 = occupied, 0 = not)
 
 # distance to forest variable
-model3 <- glm(
-  sp ~ edge_distance,
-  data = nest_boxes_clean,
-  family = binomial())
+model3 <- glm( # generalized lineear model
+  sp ~ edge_distance, # just distance from forest edge predicted variable
+  data = nest_boxes_clean, # from this data frame
+  family = binomial()) # logistic regression (binary outcome: 1 = occupied, 0 = not)
 
 ```
 
@@ -163,7 +163,7 @@ Model3 <- plot(simulateResiduals(model3)) # for distance from forest edge variab
 ## g. Select the best model
 
 ```{r}
-AICc(model0,
+AICc(model0,# compute AICc for each model
      model1,
      model2,
      model3) |> 
@@ -175,53 +175,62 @@ AICc(model0,
 ## h. Visualize the model predictions
 
 ```{r}
-predicted_vals <- ggpredict(model1, terms = c("edge_distance [all]", "season")) |>
-  rename(season = group) 
+predicted_vals <- ggpredict(model1, terms = c("edge_distance [all]", "season")) |> # generate model predictions for plotting by choosing the predictor variables for model1
+  rename(season = group) # rename group column to seasons for clarification
 
-nest_data <- nest_boxes_clean |> 
+nest_data <- nest_boxes_clean |> # creating a new dataset
   mutate(
-    sp = as.numeric(sp),
-    season = factor(season))
+    sp = as.numeric(sp), # convert species abbreviation to numeric
+    season = factor(season)) # makes season a factor for plotting
 
-# Plot
-ggplot(data = nest_data, 
-       aes(x = edge_distance, y = sp, color = season)) +
+ggplot(data = nest_data, # creating plot and selecting data frame
+       aes(x = edge_distance, # set x as edge_distance
+           y = sp, # set y as presence of species
+           color = season)) + # color by season
   
-  geom_point(alpha = 0.5, size = 2.2) +
+  geom_point(alpha = 0.5, size = 2.2) + # slightly transparent point to make sure they don't overlap
 
+# Add confidence ribbon from model predictions
   geom_ribbon(data = predicted_vals,
-              aes(x = x, ymin = conf.low, ymax = conf.high, fill = season),
-              alpha = 0.25, inherit.aes = FALSE) +
+              aes(x = x, ymin = conf.low, ymax = conf.high, fill = season), # ribbon for CI
+              alpha = 0.25, inherit.aes = FALSE) + # do not inherit main plot aesthetics
 
+  geom_line(data = predicted_vals, # Add predicted model line
+            aes(x = x, y = predicted, color = season), # prediction lines by season
+            linewidth = 1.1, inherit.aes = FALSE) + # set line width
 
-  geom_line(data = predicted_vals,
-            aes(x = x, y = predicted, color = season),
-            linewidth = 1.1, inherit.aes = FALSE) +
+  scale_y_continuous(limits = c(0, 1), breaks = c(0, 1, 0.5)) + # Define y-axis scale and breaks
+  scale_fill_manual(values = c("2016" = "#d95f0e", "2019" = "#1b9e77")) +  # Set custom fill and color values for 2016 season
+  scale_color_manual(values = c("2016" = "#d95f0e", "2019" = "#1b9e77")) +  # Set custom fill and color values for 2019 season
 
-  scale_y_continuous(limits = c(0, 1), breaks = c(0, 1, 0.5)) +
-  scale_fill_manual(values = c("2016" = "#d95f0e", "2019" = "#1b9e77")) +
-  scale_color_manual(values = c("2016" = "#d95f0e", "2019" = "#1b9e77")) +
-
-  theme_classic(base_size = 13) +
+  theme_classic(base_size = 13) + # clean layout with slightly larger base font
   theme(
-    panel.background = element_blank(),
-    panel.grid = element_blank(),
-    axis.ticks = element_line(color = "black"),
-    axis.line = element_line(color = "black"),
-    legend.position = c(0.87, 0.6)) +
+    panel.background = element_blank(), # Remove panel background
+    panel.grid = element_blank(), # Remove grid lines
+    axis.ticks = element_line(color = "black"), # Show black axis ticks
+    axis.line = element_line(color = "black"), # Show axis lines
+    legend.position = c(0.87, 0.6)) + # manually position legend inside the plot
 
   labs(
-  title = "Swift Parrot Nest Box Use based on Distance from Forest Edge",
-  x = "Distance from forest edge (m)",
-  y = "Probability of nest box occupancy (%)",
-  fill = "Season", 
-  color = "Season")
+  title = "Swift Parrot Nest Box Use based on Distance from Forest Edge", # Main title
+  x = "Distance from forest edge (m)", # x-axis label
+  y = "Probability of nest box occupancy (%)", # y-axis label
+  fill = "Season",  # legend label for fill
+  color = "Season") # legend label for color
 ```
 
 ## i. Write a caption for your figure
 
 \[Figure 1 shows the Swift Parrot Nest Box Use based on Distance from Forest Edge. The x axis shows the distance from the forest edge and the y-axis shows the probability of nest box occupancy (%). The red line is from the 2016 season and the green line is from the 2019 season. The shaded ribbons on both lines show the 95% confidence interval around the values predicted by the season and distance from the forest edge. The nests occupied by the Swift Parrot (n = 49) are the points at the top (100% occupancy). The nests not occupied by the Swift Parrots and occupied by other birds or empty (n = 178) are the points at the bottom (0%). For both the 2016 and 2019 season, it appears that the probability of the Swift Parrot's nest box occupancy decreases at it gets further away from the forest edge. The From Stojanovic, Dejan; Owens, Giselle; Young, Catherine et al. (2021). Do nest boxes breed the target species or its competitors? A case study of a critically endangered bird \[Dataset\]. Dryad. https://doi.org/10.5061/dryad.83bk3j9sb\]
 
+## j. Calculate model predictions
+
+```{r}
+ggpredict(model1, # predict values for model 1
+          terms = c("edge_distance [0, 900]", "season [2016]")) # across edge distances from 0 to 900 meters for observations of 2016 season
+ggpredict(model1, # predict values for model 1
+          terms = c("edge_distance [0, 900]", "season [2019]")) # across edge distances from 0 to 900 meters for observations of 2019 season
+```
 # 4. Affective and exploratory visualizations
 
 ## a. Comparing visualizations
