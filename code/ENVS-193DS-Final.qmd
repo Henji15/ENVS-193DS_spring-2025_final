@@ -31,15 +31,15 @@ nest_boxes <- read.csv("C:/Users/tuthi/OneDrive/Documents/github/ENVS-193DS_spri
 
 ## a. Transparent statistical methods
 
-\[In part 1, they used a correlation test. In part 2, they used an ANOVA test.\]
+\[In part 1, they used a pearson correlation test. In part 2, they used an ANOVA test.\]
 
 ## b. More information needed
 
-\[The first test would be Tukey Honestly Significantly Different (Tukey HSD) test. It compares which sources are actually different when you compare them (like the average nirogen laod (kg year\^-1). Another test would be calculating the effect size shows how much the grouping variable explains the response variable (how much the source explains the average nitrogen load (kg year\^-1))\]
+\[The first test would be Tukey Honestly Significantly Different (Tukey HSD) test. It compares which sources are actually different when you compare them (like urban land, atmospheric deposition, fertilizer, wastewater treatment, and grassland's average nitrogen load (kg year⁻)). Another test would be calculating the effect size shows how much the grouping variable explains the response variable (how much the source explains the average nitrogen load (kg year⁻¹)). An effect size for ANOVA would help add context to assess if the differences between the sources are biologically meaningful.]
 
 ## c. Suggestions for rewriting
 
-\[In part 1, we found some correlation between distance from headwater (km) and annual total nitrogen load (kg year-1) (pearson's correlation test, r = correlaton coefficient, p = 0.03, $\alpha$ = significance level). For part 2, we found a difference ($\eta$\^2 = effect size) between sources in average nitrogen load (kg year-1) (one-way ANOVA , F(among groups df, within groups df) = test statistic, p = 0.02, $\alpha$ = significance level). On average, urban showed land \_\_ nitrogen load (kg year\^-1) (x kg \_\_, % confidence interval: \[lower bound, upper bound\] kg year\^-1) than atmospheric deposition (this can expanded for more variables).\]
+\[In part 1, we found a (insert effect size) relationship between distance from headwater (km) and annual total nitrogen load (kg year⁻) (pearson's correlation test, r = correlaton coefficient, p = 0.03, $\alpha$ = significance level). For part 2, we found a difference ($\eta$\^2 = effect size) between urban land, atmospheric deposition, fertilizer, wastewater treatment, and grassland in average nitrogen load (kg year⁻) (one-way ANOVA , F(among groups df, within groups df) = test statistic, p = 0.02, $\alpha$ = significance level). On average, urban land showed (more, less...) nitrogen load (kg year⁻¹) (__ kg year⁻, % confidence interval: \[lower bound, upper bound\] kg year⁻) than atmospheric deposition (this can expanded for more variables).\]
 
 # 2. Data Visualization
 
@@ -234,7 +234,7 @@ ggpredict(model1, # predict values for model 1
 
 ## k. Interpret your results
 
-[There is an inverse relationship between the probablility of Swift Parrot nest box occupancy and distance from the forest edge, which means as the distance from the forest edge increases, the probability of nest box occupancy for the Swift Parrot decreases (shown from figure in part h). The model predictions from part j show that the probability of occupancy at 0 meters from the forest edge is 0.48 (95% CI: [0.33, 0.64]), whereas at 900 meters it is 0.12 (95% CI: [0.06, 0.24]) for the 2016 season. For the 2019 season, the likelihood of occupancy at 0 meters is 0.30 (95% CI: [0.18, 0.44]), and only 0.06 at 900 meters (95% CI: [0.03, 0.13].This means that the Swift parrots prefer to be closer to the forest edge, because they avoid predators and potential competition from other bird species as well as access to better resources. The Swift Parrot may be avoiding the Tree Martin, whose probability of occupying a nest box increases it's farther from the forest edge.]
+\[There is an inverse relationship between the probablility of Swift Parrot nest box occupancy and distance from the forest edge, which means as the distance from the forest edge increases, the probability of nest box occupancy for the Swift Parrot decreases (shown from figure in part h). The model predictions from part j show that the probability of occupancy at 0 meters from the forest edge is 0.48 (95% CI: \[0.33, 0.64\]), whereas at 900 meters it is 0.12 (95% CI: \[0.06, 0.24\]) for the 2016 season. For the 2019 season, the likelihood of occupancy at 0 meters is 0.30 (95% CI: \[0.18, 0.44\]), and only 0.06 at 900 meters (95% CI: \[0.03, 0.13\].This means that the Swift parrots prefer to be closer to the forest edge, because they avoid predators and potential competition from other bird species as well as access to better resources. The Swift Parrot may be avoiding the Tree Martin, whose probability of occupying a nest box increases it's farther from the forest edge.\]
 
 # 4. Affective and exploratory visualizations
 
