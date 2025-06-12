@@ -231,6 +231,11 @@ ggpredict(model1, # predict values for model 1
 ggpredict(model1, # predict values for model 1
           terms = c("edge_distance [0, 900]", "season [2019]")) # across edge distances from 0 to 900 meters for observations of 2019 season
 ```
+
+## k. Interpret your results
+
+[There is an inverse relationship between the probablility of Swift Parrot nest box occupancy and distance from the forest edge, which means as the distance from the forest edge increases, the probability of nest box occupancy for the Swift Parrot decreases (shown from figure in part h). The model predictions from part j show that the probability of occupancy at 0 meters from the forest edge is 0.48 (95% CI: [0.33, 0.64]), whereas at 900 meters it is 0.12 (95% CI: [0.06, 0.24]) for the 2016 season. For the 2019 season, the likelihood of occupancy at 0 meters is 0.30 (95% CI: [0.18, 0.44]), and only 0.06 at 900 meters (95% CI: [0.03, 0.13].This means that the Swift parrots prefer to be closer to the forest edge, because they avoid predators and potential competition from other bird species as well as access to better resources. The Swift Parrot may be avoiding the Tree Martin, whose probability of occupying a nest box increases it's farther from the forest edge.]
+
 # 4. Affective and exploratory visualizations
 
 ## a. Comparing visualizations
